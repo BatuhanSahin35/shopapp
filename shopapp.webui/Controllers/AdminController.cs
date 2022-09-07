@@ -74,19 +74,24 @@ namespace shopapp.webui.Controllers
         [HttpPost]
         public IActionResult CategoryCreate(CategoryModel model)
         {
-            var entity = new Category()
+             if(ModelState.IsValid)
             {
-                Name = model.Name,
-                Url = model.Url            
-            };
+                var entity = new Category()
+                {
+                    Name = model.Name,
+                    Url = model.Url            
+                };
+                
+                _categoryService.Create(entity);
+
+
+                TempData["message"] =  $"{entity.Name} isimli category eklendi.";
+
+
+                return RedirectToAction("CategoryList");
+            }
+            return View(model);
             
-            _categoryService.Create(entity);
-
-
-            TempData["message"] =  $"{entity.Name} isimli category eklendi.";
-
-
-            return RedirectToAction("CategoryList");
         }
 
 

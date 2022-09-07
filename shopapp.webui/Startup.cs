@@ -23,7 +23,7 @@ namespace shopapp.webui
     {
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<ApplicationContext>(options => options.UseSqlServer(@"Server=DESKTOP-87LVU45;Database=YepyeniShopDb;Trusted_Connection=true"));
+            services.AddDbContext<ApplicationContext>(options => options.UseSqlServer(@"Server=DESKTOP-87LVU45;Database=KursDb;Trusted_Connection=true"));
             services.AddIdentity<User, IdentityRole>().AddEntityFrameworkStores<ApplicationContext>().AddDefaultTokenProviders();
 
             services.Configure<IdentityOptions>(options =>
