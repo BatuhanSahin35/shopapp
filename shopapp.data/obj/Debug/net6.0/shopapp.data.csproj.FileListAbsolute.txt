@@ -1,0 +1,17 @@
+C:\Users\batuh\Desktop\shopapp\shopapp.data\bin\Debug\net6.0\shopapp.data.deps.json
+C:\Users\batuh\Desktop\shopapp\shopapp.data\bin\Debug\net6.0\shopapp.data.runtimeconfig.json
+C:\Users\batuh\Desktop\shopapp\shopapp.data\bin\Debug\net6.0\shopapp.data.dll
+C:\Users\batuh\Desktop\shopapp\shopapp.data\bin\Debug\net6.0\shopapp.data.pdb
+C:\Users\batuh\Desktop\shopapp\shopapp.data\bin\Debug\net6.0\shopapp.entity.dll
+C:\Users\batuh\Desktop\shopapp\shopapp.data\bin\Debug\net6.0\shopapp.entity.pdb
+C:\Users\batuh\Desktop\shopapp\shopapp.data\obj\Debug\net6.0\shopapp.data.csproj.AssemblyReference.cache
+C:\Users\batuh\Desktop\shopapp\shopapp.data\obj\Debug\net6.0\shopapp.data.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\batuh\Desktop\shopapp\shopapp.data\obj\Debug\net6.0\shopapp.data.AssemblyInfoInputs.cache
+C:\Users\batuh\Desktop\shopapp\shopapp.data\obj\Debug\net6.0\shopapp.data.AssemblyInfo.cs
+C:\Users\batuh\Desktop\shopapp\shopapp.data\obj\Debug\net6.0\shopapp.data.csproj.CoreCompileInputs.cache
+C:\Users\batuh\Desktop\shopapp\shopapp.data\obj\Debug\net6.0\shopapp.data.csproj.CopyComplete
+C:\Users\batuh\Desktop\shopapp\shopapp.data\obj\Debug\net6.0\shopapp.data.dll
+C:\Users\batuh\Desktop\shopapp\shopapp.data\obj\Debug\net6.0\refint\shopapp.data.dll
+C:\Users\batuh\Desktop\shopapp\shopapp.data\obj\Debug\net6.0\shopapp.data.pdb
+C:\Users\batuh\Desktop\shopapp\shopapp.data\obj\Debug\net6.0\shopapp.data.genruntimeconfig.cache
+C:\Users\batuh\Desktop\shopapp\shopapp.data\obj\Debug\net6.0\ref\shopapp.data.dll
