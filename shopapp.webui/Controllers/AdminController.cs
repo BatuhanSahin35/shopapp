@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using shopapp.business.Abstract;
 using shopapp.entity;
@@ -7,6 +8,7 @@ using shopapp.webui.Models;
 
 namespace shopapp.webui.Controllers
 {
+    [Authorize]
     public class AdminController: Controller
     {
         private IProductService _productService;

@@ -6,6 +6,7 @@ using shopapp.webui.Models;
 
 namespace shopapp.webui.Controllers
 {
+    [AutoValidateAntiforgeryToken]
     public class AccountController:Controller
     {
         private UserManager<User> _userManager;
@@ -15,10 +16,35 @@ namespace shopapp.webui.Controllers
             _userManager=userManager;
             _signInManager=signInManager;
         }
-        public IActionResult Login()
+        [HttpGet]
+        public IActionResult Login(string ReturnUrl = null)
         {
-            return View();
+            return View(new LoginModel()
+            {
+                ReturnUrl=ReturnUrl
+            });
         }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Login(LoginModel model)
+        {
+            if(!ModelState.IsValid){
+                return View(model);
+            }
+            var user= await _userManager.FindByNameAsync(model.UserName);
+            if(user==null){
+                ModelState.AddModelError("","Kullanıcı adı oluşturulmamış");
+                return View(model);
+            }
+            var result= await _signInManager.PasswordSignInAsync(user,model.Password,true,false);
+            if(result.Succeeded){
+                //anasayfaya gitmek için
+                return Redirect(model.ReturnUrl??"~/");
+            }
+            ModelState.AddModelError("","Kullanıcı adı veya şifre hatalı");
+            return View(model);
+        }
+
 
         public IActionResult Register()
         {
@@ -26,6 +52,7 @@ namespace shopapp.webui.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Register(RegisterModel model)
         {
             if(!ModelState.IsValid)
@@ -52,5 +79,11 @@ namespace shopapp.webui.Controllers
             ModelState.AddModelError("","Bilinmeyen hata oldu lütfen tekrar deneyiniz.");
             return View(model);
         }
+
+
+         public async Task<IActionResult> Logout(){
+            await _signInManager.SignOutAsync();
+            return Redirect("~/");	
+         }
     }
 }

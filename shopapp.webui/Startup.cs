@@ -63,6 +63,7 @@ namespace shopapp.webui
                 {
                     HttpOnly = true,
                     Name = ".ShopApp.Security.Cookie",
+                    SameSite = SameSiteMode.Strict
                 };
             });
 
