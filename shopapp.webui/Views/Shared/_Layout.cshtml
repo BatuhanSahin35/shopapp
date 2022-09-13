@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
     <link rel="stylesheet" href="/modules/bootstrap/dist/css/bootstrap.min.css" crossorigin="anonymous">
+    @RenderSection("Css", required: false)
     <link rel="stylesheet" href="~/css/style.css">
     <title>Shopapp</title>
 </head>
@@ -35,8 +36,7 @@
         Shop App
     </footer>
 
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>    
     @RenderSection("Scripts",false)
 </body>
 </html>

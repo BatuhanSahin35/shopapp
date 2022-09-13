@@ -85,5 +85,10 @@ namespace shopapp.webui.Controllers
             await _signInManager.SignOutAsync();
             return Redirect("~/");	
          }
+
+         public IActionResult AccessDenied()
+         {
+            return View();
+         }
     }
 }

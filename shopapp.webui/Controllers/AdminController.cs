@@ -12,7 +12,7 @@ using shopapp.webui.Models;
 
 namespace shopapp.webui.Controllers
 {
-    [Authorize]
+    [Authorize(Roles ="Admin")]
     public class AdminController: Controller
     {
         private IProductService _productService;
@@ -39,6 +39,57 @@ namespace shopapp.webui.Controllers
                 Products = _productService.GetAll()
             });
         }
+
+        public async Task<IActionResult> UserEdit(string id)
+        {
+            var user = await _userManager.FindByIdAsync(id);
+            if(user!=null)
+            {
+                var selectedRoles = await _userManager.GetRolesAsync(user);
+                var roles = _roleManager.Roles.Select(i=>i.Name);
+
+                ViewBag.Roles = roles;
+                return View(new UserDetailModel(){
+                    UserId = user.Id,
+                    UserName = user.UserName,
+                    FirstName = user.FirstName,
+                    LastName = user.LastName,
+                    Email = user.Email,
+                    SelectedRoles = selectedRoles
+                });
+            }
+            return Redirect("~/admin/userlist");
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> UserEdit(UserDetailModel model,string[] selectedroles) {
+            if(ModelState.IsValid){
+                var user = await _userManager.FindByIdAsync(model.UserId);
+                if(user!=null){
+                    user.FirstName = model.FirstName;
+                    user.LastName = model.LastName;
+                    user.Email = model.Email;
+                     var result = await _userManager.UpdateAsync(user);
+                    if(result.Succeeded){
+                        var userRoles = await _userManager.GetRolesAsync(user);
+                        selectedroles = selectedroles ?? new string[] { };
+                        await _userManager.AddToRolesAsync(user, selectedroles.Except(userRoles).ToArray<string>());
+                        await _userManager.RemoveFromRolesAsync(user, userRoles.Except(selectedroles).ToArray<string>());
+                        return Redirect("/admin/userlist");
+                    }
+                }
+                return Redirect("/admin/userlist");
+            }
+            return View(model);
+        }
+
+
+
+        public IActionResult UserList(){
+            return View(_userManager.Users);
+        }
+
+
 
         [HttpGet]
         public async  Task<IActionResult> RoleEdit(string id){
