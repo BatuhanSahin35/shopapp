@@ -27,29 +27,26 @@ namespace shopapp.data.Concrete.EfCore
         }
 
         private static Category[] Categories = {
-            new Category(){Name="Telefon",Url="telefon"},
-            new Category(){Name="Bilgisayar",Url="bilgisayar"},
-            new Category(){Name="Elektronik",Url="elektronik"},
-            new Category(){Name="Beyaz Eşya",Url="beyaz-esya"}
+            new Category(){Name="Film",Url="Film"},
+            new Category(){Name="Kitap",Url="Kitap"},
+            new Category(){Name="Müzik",Url="Müzik"},
+            new Category(){Name="Oyun",Url="Oyun"}
         };
 
         private static Product[] Products = {
-            new Product(){Name="Samsung S5",Url="samsung-s5",Price=2000,ImageUrl="1.jpg",Description="iyi telefon", IsApproved=true},
-            new Product(){Name="Samsung S6",Url="samsung-s6",Price=3000,ImageUrl="2.jpg",Description="iyi telefon", IsApproved=false},
-            new Product(){Name="Samsung S7",Url="samsung-s7",Price=4000,ImageUrl="3.jpg",Description="iyi telefon", IsApproved=true},
-            new Product(){Name="Samsung S8",Url="samsung-s8",Price=5000,ImageUrl="4.jpg",Description="iyi telefon", IsApproved=false},
-            new Product(){Name="Samsung S9",Url="samsung-s9",Price=6000,ImageUrl="5.jpg",Description="iyi telefon", IsApproved=true},
+            new Product(){Name="Film1",Url="film-1",ImageUrl="1.jpg",Year="2010",Description="film1"},
+            new Product(){Name="Film2",Url="film-2",ImageUrl="2.jpg",Year="2012",Description="film2"},
+            new Product(){Name="Kitap1",Url="kitap-1",ImageUrl="3.jpg",Year="2014",Description="kitap1"},
+            new Product(){Name="Müzik1",Url="müzik-1",ImageUrl="4.jpg",Year="2015",Description="müzik1"},
+            new Product(){Name="Oyun1",Url="oyun-1",ImageUrl="5.jpg",Year="2012",Description="oyun1"},
         };
 
         private static ProductCategory[] ProductCategories={
             new ProductCategory(){Product=Products[0],Category=Categories[0]},
-            new ProductCategory(){Product=Products[0],Category=Categories[2]},
             new ProductCategory(){Product=Products[1],Category=Categories[0]},
-            new ProductCategory(){Product=Products[1],Category=Categories[2]},
-            new ProductCategory(){Product=Products[2],Category=Categories[0]},
-            new ProductCategory(){Product=Products[2],Category=Categories[2]},
-            new ProductCategory(){Product=Products[3],Category=Categories[0]},
+            new ProductCategory(){Product=Products[2],Category=Categories[1]},
             new ProductCategory(){Product=Products[3],Category=Categories[2]},
+            new ProductCategory(){Product=Products[4],Category=Categories[3]},
         };
     }
 }

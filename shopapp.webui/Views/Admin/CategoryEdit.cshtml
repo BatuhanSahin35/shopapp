@@ -48,16 +48,7 @@
                                     <tr>
                                         <td>@item.ProductId</td>
                                         <td><img src="~/img/@item.ImageUrl" width="80"></td>
-                                        <td>@item.Name</td>
-                                        <td>@item.Price</td>                                       
-                                        <td>
-                                            @if(item.IsApproved)
-                                            {
-                                                <i class="fas fa-check-circle"></i>
-                                            }else{
-                                                <i class="fas fa-times-circle"></i>
-                                            }
-                                        </td>
+                                        <td>@item.Name</td>                                      
                                         <td>
                                             <a href="/admin/products/@item.ProductId" class="btn btn-primary btn-sm mr-2">Edit</a>
                                             

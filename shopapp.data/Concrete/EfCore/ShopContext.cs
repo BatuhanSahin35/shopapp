@@ -7,10 +7,12 @@ namespace shopapp.data.Concrete.EfCore
     {
         public DbSet<Product> Products { get; set; }
         public DbSet<Category> Categories { get; set; }
+        public DbSet<List> Lists { get; set; }
+        public DbSet<ListItem> ListItems { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Server=DESKTOP-87LVU45;Database=KursDb;Trusted_Connection=true");
+            optionsBuilder.UseSqlServer(@"Server=DESKTOP-87LVU45;Database=PlannerDB;Trusted_Connection=true");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

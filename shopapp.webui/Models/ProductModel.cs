@@ -23,12 +23,15 @@ namespace shopapp.webui.Models
         [Required(ErrorMessage="Description zorunlu bir alan.")]
         [StringLength(100,MinimumLength=5,ErrorMessage="Description 5-100 karakter aralığında olmalıdır.")]
 
-        public string Description { get; set; }      
+        public string Description { get; set; }  
+
+        [Required(ErrorMessage="Year zorunlu bir alan.")]
+        [StringLength(4,MinimumLength=4,ErrorMessage="Year 4 karakter olmalıdır.")]
+        public string Year { get; set; }
        
         [Required(ErrorMessage="ImageUrl zorunlu bir alan.")]  
         public string ImageUrl { get; set; }
-        public bool IsApproved { get; set; }
-        public bool IsHome { get; set; }
+        
         public List<Category> SelectedCategories { get; set; }
     }
 }

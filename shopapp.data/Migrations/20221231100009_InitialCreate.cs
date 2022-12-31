@@ -30,11 +30,9 @@ namespace shopapp.data.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Url = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Price = table.Column<double>(type: "float", nullable: true),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    IsApproved = table.Column<bool>(type: "bit", nullable: false),
-                    IsHome = table.Column<bool>(type: "bit", nullable: false)
+                    Year = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {

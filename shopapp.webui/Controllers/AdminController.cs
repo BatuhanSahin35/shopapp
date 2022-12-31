@@ -196,7 +196,7 @@ namespace shopapp.webui.Controllers
                 {
                     Name = model.Name,
                     Url = model.Url,
-                    Price = model.Price,
+                    Year = model.Year,
                     Description = model.Description,
                     ImageUrl = model.ImageUrl
                 };
@@ -263,7 +263,7 @@ namespace shopapp.webui.Controllers
                 ProductId = entity.ProductId,
                 Name = entity.Name,
                 Url = entity.Url,
-                Price = entity.Price,
+                Year = entity.Year,
                 ImageUrl= entity.ImageUrl,
                 Description = entity.Description,
                 SelectedCategories = entity.ProductCategories.Select(i=>i.Category).ToList()
@@ -283,8 +283,8 @@ namespace shopapp.webui.Controllers
                 return NotFound();
             }
             entity.Name = model.Name;
-            entity.Price = model.Price;
             entity.Url = model.Url;
+            entity.Year = model.Year;
             entity.ImageUrl = model.ImageUrl;
             entity.Description = model.Description;
 

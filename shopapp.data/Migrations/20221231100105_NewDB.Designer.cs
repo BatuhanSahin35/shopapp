@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using shopapp.data.Concrete.EfCore;
 
@@ -10,9 +11,10 @@ using shopapp.data.Concrete.EfCore;
 namespace shopapp.data.Migrations
 {
     [DbContext(typeof(ShopContext))]
-    partial class ShopContextModelSnapshot : ModelSnapshot
+    [Migration("20221231100105_NewDB")]
+    partial class NewDB
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -40,46 +42,6 @@ namespace shopapp.data.Migrations
                     b.HasKey("CategoryId");
 
                     b.ToTable("Categories");
-                });
-
-            modelBuilder.Entity("shopapp.entity.List", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Lists");
-                });
-
-            modelBuilder.Entity("shopapp.entity.ListItem", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<int>("ListId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ProductId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ListId");
-
-                    b.HasIndex("ProductId");
-
-                    b.ToTable("ListItems");
                 });
 
             modelBuilder.Entity("shopapp.entity.Product", b =>
@@ -130,25 +92,6 @@ namespace shopapp.data.Migrations
                     b.ToTable("ProductCategory");
                 });
 
-            modelBuilder.Entity("shopapp.entity.ListItem", b =>
-                {
-                    b.HasOne("shopapp.entity.List", "List")
-                        .WithMany("ListItems")
-                        .HasForeignKey("ListId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("shopapp.entity.Product", "Product")
-                        .WithMany()
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("List");
-
-                    b.Navigation("Product");
-                });
-
             modelBuilder.Entity("shopapp.entity.ProductCategory", b =>
                 {
                     b.HasOne("shopapp.entity.Category", "Category")
@@ -171,11 +114,6 @@ namespace shopapp.data.Migrations
             modelBuilder.Entity("shopapp.entity.Category", b =>
                 {
                     b.Navigation("ProductCategories");
-                });
-
-            modelBuilder.Entity("shopapp.entity.List", b =>
-                {
-                    b.Navigation("ListItems");
                 });
 
             modelBuilder.Entity("shopapp.entity.Product", b =>

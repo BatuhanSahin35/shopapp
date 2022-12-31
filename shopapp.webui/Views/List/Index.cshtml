@@ -1,0 +1,51 @@
+@model ListModel
+
+<h1 class="h3">My List</h1>
+<hr>
+
+@if(Model.ListItems.Count==0){
+    <div class="row">
+    <div class="col-12">
+        <div class="alert alert-warning">
+            There is no product in the list
+        </div>
+    </div>
+</div>
+}
+else
+{
+    <div class="row">
+        <div class="col-md-8">
+            <table class="table hover">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Product Name</th>
+                        @*Listeden ürüne giderken ne gözükmesini istediğimizi yazcaz*@
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.ListItems)
+                    {
+                        <tr>
+                            <td>
+                                <img src="~/img/@item.ImageUrl" width="80" alt="">
+                            </td> 
+                            <td>@item.Name</td>
+                            <td>
+                                <form asp-controller="List" asp-action=DeleteFromList method="post">
+                                    <input type="hidden" name="productId" value="@item.ProductId">
+                                    <button type="submit" class="btn btn-danger btn-sm">Remove</button>
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+}
+
+
+
+

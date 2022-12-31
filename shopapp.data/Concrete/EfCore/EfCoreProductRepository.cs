@@ -25,7 +25,7 @@ namespace shopapp.data.Concrete.EfCore
         {
            using (var context = new ShopContext())
             {
-                var products = context.Products.Where(i=>i.IsApproved).AsQueryable();
+                var products = context.Products.AsQueryable();
 
                 if(!string.IsNullOrEmpty(category))
                 {
@@ -43,7 +43,7 @@ namespace shopapp.data.Concrete.EfCore
             using (var context = new ShopContext())
             {
                 return context.Products
-                    .Where(i=>i.IsApproved && i.IsHome).ToList();
+                    .ToList();
             }
         }
         public Product GetProductDetails(string url)
@@ -64,7 +64,6 @@ namespace shopapp.data.Concrete.EfCore
             {
                 var products = context
                     .Products
-                    .Where(i=>i.IsApproved)
                     .AsQueryable();
 
                 if(!string.IsNullOrEmpty(name))
@@ -84,7 +83,7 @@ namespace shopapp.data.Concrete.EfCore
             {
                 var products = context
                     .Products
-                    .Where(i=>i.IsApproved && (i.Name.ToLower().Contains(searchString.ToLower()) || i.Description.ToLower().Contains(searchString.ToLower())))
+                    .Where(i=>(i.Name.ToLower().Contains(searchString.ToLower()) || i.Description.ToLower().Contains(searchString.ToLower())))
                     .AsQueryable();
 
                 return products.ToList();
@@ -103,8 +102,8 @@ namespace shopapp.data.Concrete.EfCore
                 if(product!=null)
                 {
                     product.Name = entity.Name;
-                    product.Price = entity.Price;
                     product.Description=entity.Description;
+                    product.Year = entity.Year;
                     product.Url =entity.Url;
                     product.ImageUrl =entity.ImageUrl;
 

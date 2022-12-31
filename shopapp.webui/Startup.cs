@@ -23,7 +23,7 @@ namespace shopapp.webui
     {
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<ApplicationContext>(options => options.UseSqlServer(@"Server=DESKTOP-87LVU45;Database=KursDb;Trusted_Connection=true"));
+            services.AddDbContext<ApplicationContext>(options => options.UseSqlServer(@"Server=DESKTOP-87LVU45;Database=PlannerDB;Trusted_Connection=true"));
             services.AddIdentity<User, IdentityRole>().AddEntityFrameworkStores<ApplicationContext>().AddDefaultTokenProviders();
 
             services.Configure<IdentityOptions>(options =>
@@ -69,9 +69,11 @@ namespace shopapp.webui
 
             services.AddScoped<ICategoryRepository,EfCoreCategoryRepository>(); 
             services.AddScoped<IProductRepository,EfCoreProductRepository>(); 
+            services.AddScoped<IListRepository,EfCoreListRepository>(); 
 
             services.AddScoped<IProductService,ProductManager>(); 
             services.AddScoped<ICategoryService,CategoryManager>(); 
+            services.AddScoped<IListService,ListManager>(); 
 
             services.AddControllersWithViews();
         }
@@ -99,6 +101,11 @@ namespace shopapp.webui
 
             app.UseEndpoints(endpoints =>
             {    
+                endpoints.MapControllerRoute(
+                    name: "list", 
+                    pattern: "list",
+                    defaults: new {controller="List",action="Index"}
+                );
 
                 endpoints.MapControllerRoute(
                     name: "adminuseredit", 
@@ -197,6 +204,10 @@ namespace shopapp.webui
                     name: "default",
                     pattern:"{controller=Home}/{action=Index}/{id?}"
                 );
+
+
+
+
             });
         }
     }

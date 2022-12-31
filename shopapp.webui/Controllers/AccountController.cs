@@ -1,6 +1,7 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using shopapp.business.Abstract;
 using shopapp.webui.Identity;
 using shopapp.webui.Models;
 
@@ -11,8 +12,10 @@ namespace shopapp.webui.Controllers
     {
         private UserManager<User> _userManager;
         private SignInManager<User> _signInManager;
-        public AccountController(UserManager<User> userManager,SignInManager<User> signInManager)
+        private IListService _listService;
+        public AccountController(IListService listService,UserManager<User> userManager,SignInManager<User> signInManager)
         {
+            _listService=listService;
             _userManager=userManager;
             _signInManager=signInManager;
         }
@@ -73,6 +76,7 @@ namespace shopapp.webui.Controllers
             {
                 // generate token
                 // email
+                _listService.InitializeList(user.Id);
                 return RedirectToAction("Login","Account");
             }
 
